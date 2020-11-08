@@ -1,7 +1,9 @@
 {
   "name": "front-end-pos-demo-2",
   "version": "1.0.0",
-  "dependencies": {},
+  "dependencies": {
+    "admin-lte": "^3.0.5"
+  },
   "devDependencies": {
     "browser-sync": "^2.26.13"
   }
