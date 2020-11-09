@@ -18,6 +18,15 @@
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
+    <!-- Select2 -->
+    <link rel="stylesheet" href="node_modules/admin-lte/plugins/select2/css/select2.min.css">
+    <link rel="stylesheet" href="node_modules/admin-lte/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+
+
+
+
+
+
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -127,7 +136,111 @@
             </div><!-- /.container-fluid -->
         </div>
         <!-- /.content-header -->
+
+        <div class="card container-fluid">
+            <div class="row">
+                <div class="col-lg-2">
+                    <div class="form-group">
+                        <label>Customer ID</label>
+                        <select class="form-control select2">
+                            <option selected="selected">C001</option>
+                            <option>C002</option>
+                            <option>C003</option>
+                            <option>C004</option>
+                            <option>C005</option>
+                            <option>C006</option>
+                            <option>C007</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-lg-3">
+                    <label>Customer Name</label>
+                    <input type="text" class="form-control" placeholder="ex: Visura Prabod">
+                </div>
+
+                <div class="col-lg-3">
+                    <label>Address</label>
+                    <input type="text" class="form-control" disabled>
+                </div>
+
+
+                <div class="col-lg-2">
+                    <!-- Date dd/mm/yyyy -->
+                    <div class="form-group">
+                        <label>Date</label>
+
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+                            </div>
+                            <input type="text" class="form-control">
+                        </div>
+                        <!-- /.input group -->
+                    </div>
+                    <!-- /.form group -->
+
+                    <!-- Date mm/dd/yyyy -->
+                </div>
+
+
+            </div>
+
+
+            <div class="row">
+                <div class="col-lg-2">
+                    <div class="form-group">
+                        <label>Item Code</label>
+                        <select class="form-control select2">
+                            <option selected="selected">P001</option>
+                            <option>P002</option>
+                            <option>P003</option>
+                            <option>P004</option>
+                            <option>P005</option>
+                            <option>P006</option>
+                            <option>P007</option>
+                        </select>
+                    </div>
+                </div>
+
+
+                <div class="col col-lg-3">
+                    <label>Description</label>
+                    <input type="text" class="form-control" placeholder="ex: milo 450g ">
+                </div>
+
+                <div class="col col-lg-2">
+                    <label>Qty On Hand</label>
+                    <input type="text" class="form-control" disabled>
+                </div>
+
+                <div class="col col-lg-3">
+                    <label>Unit Price</label>
+                    <input type="text" class="form-control" disabled>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col col-lg-3">
+                    <label style="color: red">QTY</label>
+                    <input type="text" class="form-control" >
+                </div>
+
+                <div class="mt-4">
+                    <div class="btn btn-primary btn-lg btn-flat">
+                        <i class="fas fa-cart-plus fa-lg mr-2"></i>
+                        Add to Cart
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+
     </div>
+
     <!-- /.content-wrapper -->
     <footer class="main-footer">
         <strong>Copyright &copy; 2020-2011 <a href="http://adminlte.io">Visura Prabod</a>.</strong>
@@ -164,5 +277,88 @@
 <script src="node_modules/admin-lte/dist/js/pages/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="node_modules/admin-lte/dist/js/demo.js"></script>
+
+<!-- Select2 -->
+<script src="node_modules/admin-lte/plugins/select2/js/select2.full.min.js"></script>
+
+
+
+
+<!-- Page script -->
+<script>
+    $(function () {
+        //Initialize Select2 Elements
+        $('.select2').select2()
+
+        //Initialize Select2 Elements
+        $('.select2bs4').select2({
+            theme: 'bootstrap4'
+        })
+
+        //Datemask dd/mm/yyyy
+        $('#datemask').inputmask('dd/mm/yyyy', {'placeholder': 'dd/mm/yyyy'})
+        //Datemask2 mm/dd/yyyy
+        $('#datemask2').inputmask('mm/dd/yyyy', {'placeholder': 'mm/dd/yyyy'})
+        //Money Euro
+        $('[data-mask]').inputmask()
+
+        //Date range picker
+        $('#reservationdate').datetimepicker({
+            format: 'L'
+        });
+        //Date range picker
+        $('#reservation').daterangepicker()
+        //Date range picker with time picker
+        $('#reservationtime').daterangepicker({
+            timePicker: true,
+            timePickerIncrement: 30,
+            locale: {
+                format: 'MM/DD/YYYY hh:mm A'
+            }
+        })
+        //Date range as a button
+        $('#daterange-btn').daterangepicker(
+            {
+                ranges: {
+                    'Today': [moment(), moment()],
+                    'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                    'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+                    'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+                    'This Month': [moment().startOf('month'), moment().endOf('month')],
+                    'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+                },
+                startDate: moment().subtract(29, 'days'),
+                endDate: moment()
+            },
+            function (start, end) {
+                $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
+            }
+        )
+
+        //Timepicker
+        $('#timepicker').datetimepicker({
+            format: 'LT'
+        })
+
+        //Bootstrap Duallistbox
+        $('.duallistbox').bootstrapDualListbox()
+
+        //Colorpicker
+        $('.my-colorpicker1').colorpicker()
+        //color picker with addon
+        $('.my-colorpicker2').colorpicker()
+
+        $('.my-colorpicker2').on('colorpickerChange', function (event) {
+            $('.my-colorpicker2 .fa-square').css('color', event.color.toString());
+        });
+
+        $("input[data-bootstrap-switch]").each(function () {
+            $(this).bootstrapSwitch('state', $(this).prop('checked'));
+        });
+
+    })
+</script>
+
+
 </body>
 </html>
