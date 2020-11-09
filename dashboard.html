@@ -133,22 +133,30 @@
             <div class="container-fluid">
                 <!-- Small boxes (Stat box) -->
                 <div class="row">
+
                     <div class="col-lg-4 col-6">
                         <!-- small box -->
-                        <div class="small-box bg-info">
-                            <div class="inner">
-                                <h3>150</h3>
+                        <a href="manage-customers.html">
+                            <div class="small-box bg-info">
 
-                                <p>Customers</p>
+                                <div class="inner">
+                                    <h3>150</h3>
+
+                                    <p>Customers</p>
+                                </div>
+
+                                <div class="icon">
+                                    <i class="fa fa-users"></i>
+                                </div>
                             </div>
-                            <div class="icon">
-                                <i class="fa fa-users"></i>
-                            </div>
-                        </div>
+                        </a>
                     </div>
+
                     <!-- ./col -->
                     <div class="col-lg-4 col-6">
                         <!-- small box -->
+                        <a href="manage-items.html">
+
                         <div class="small-box bg-success">
                             <div class="inner">
                                 <h3>35</h3>
@@ -159,10 +167,12 @@
                                 <i class="fa fa-th-list"></i>
                             </div>
                         </div>
+                        </a>
                     </div>
                     <!-- ./col -->
                     <div class="col-lg-4 col-6">
                         <!-- small box -->
+                        <a href="search-orders.html">
                         <div class="small-box bg-warning">
                             <div class="inner">
                                 <h3>44</h3>
@@ -174,6 +184,7 @@
                             </div>
 
                         </div>
+                        </a>
                     </div>
 
                 </div>
@@ -182,6 +193,34 @@
 
                 <!-- /.row (main row) -->
             </div><!-- /.container-fluid -->
+        </section>
+
+        <section class="content">
+            <div class="col-md-6">
+                <!-- Line chart -->
+                <div class="card card-primary card-outline">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            <i class="far fa-chart-bar"></i>
+                            Line Chart
+                        </h3>
+
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse"><i
+                                    class="fas fa-minus"></i>
+                            </button>
+                            <button type="button" class="btn btn-tool" data-card-widget="remove"><i
+                                    class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div id="line-chart" style="height: 300px;"></div>
+                    </div>
+                    <!-- /.card-body-->
+                </div>
+            </div>
+
         </section>
         <!-- /.content -->
     </div>
